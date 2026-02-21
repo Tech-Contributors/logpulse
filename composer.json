@@ -21,7 +21,10 @@
     "autoload": {
         "psr-4": {
             "TechContributors\\LogPulse\\": "src/"
-        }
+        },
+        "files": [
+            "src/LogPulseFacadeStub.php"
+        ]
     },
 
     "extra": {
