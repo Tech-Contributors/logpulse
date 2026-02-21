@@ -1,4 +1,4 @@
-# TechContributors Audit Logger
+# TechContributors LogPulse
 
 Simple and lightweight audit logging for Laravel applications.
 
@@ -58,29 +58,45 @@ You can log any action using the LogPulse facade.
 use LogPulse;
 
 LogPulse::log(
-    'User Login',  //action
-    'Auth', //resource
-    2, //app id 
-    [
+    'User Login',   // action
+    'Auth',         // resource
+    [               // meta (optional extra data)
         'user_id' => auth()->id(),
         'ip' => request()->ip(),
-        'message' => 'User accessed the logs page'
-    ] //meta
+        'message' => 'User accessed logs page'
+    ],
+    auth()->id()    // app user id (optional)
 );
 ```
 
 ---
 
-## ✅ Example Use Cases
+## 📌 Parameters
 
-- User created / updated / deleted
-- Order placed or cancelled
-- Admin actions
-- Authentication events
-- Any custom business activity
+| Parameter | Required | Description |
+|---|---|---|
+| action | Yes | What happened |
+| resource | Yes | Where it happened |
+| meta | No | Extra contextual data |
+| appUserId | No | Application user ID |
 
 ---
 
-## 📄 License
+## ✅ Example Use Cases
 
-MIT License.
+- User login / logout tracking  
+- Model create / update / delete  
+- Order actions  
+- Admin activities  
+- Security monitoring  
+- Custom business events  
+
+---
+
+## 💡 Notes
+
+- Logging runs safely in background when queue is enabled.
+- If queue worker is not running, logs will still be processed.
+- No database setup required.
+
+---
