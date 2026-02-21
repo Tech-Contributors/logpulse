@@ -11,7 +11,7 @@ Log important actions from your application and send them securely to your centr
 Install the package via Composer:
 
 ```bash
-composer require techcontributors/audit-logger
+composer require techcontributors/logpulse
 ```
 
 ---
@@ -55,14 +55,17 @@ LOG_PULSE_API_KEY=your_api_key_here
 You can log any action using the LogPulse facade.
 
 ```php
-use TechContributors\LogPulse\Facades\LogPulse;
+use LogPulse;
 
 LogPulse::log(
-    action: 'created',
-    resource: 'Order',
-    meta: [
-        'order_id' => 101
-    ]
+    'User Login',  //action
+    'Auth', //resource
+    2, //app id 
+    [
+        'user_id' => auth()->id(),
+        'ip' => request()->ip(),
+        'message' => 'User accessed the logs page'
+    ] //meta
 );
 ```
 
