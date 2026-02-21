@@ -55,7 +55,7 @@ LOG_PULSE_API_KEY=your_api_key_here
 You can log any action using the LogPulse facade.
 
 ```php
-use LogPulse;
+use TechContributors\LogPulse\Facades\LogPulse;
 
 LogPulse::log(
     action: 'created',
